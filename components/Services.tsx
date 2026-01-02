@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 
@@ -102,7 +102,31 @@ export default function Services() {
           covered.
         </p>
         <div ref={servicesRef} className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
+          {services.map((service, index) => {
+            const ServiceIcon = ({ iconPath, title }: { iconPath: string; title: string }) => {
+              const [imageError, setImageError] = useState(false);
+              
+              if (imageError) {
+                return (
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FB8500] to-[#FFAC4F] rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">{title.charAt(0)}</span>
+                  </div>
+                );
+              }
+              
+              return (
+                <div className="absolute inset-0">
+                  <img
+                    src={iconPath}
+                    alt={`${title} icon`}
+                    className="w-full h-full object-contain relative z-10 drop-shadow-lg group-hover:drop-shadow-[0_0_25px_rgba(251,133,0,0.6)] transition-all duration-500"
+                    onError={() => setImageError(true)}
+                  />
+                </div>
+              );
+            };
+            
+            return (
             <div
               key={index}
               className="group relative rounded-[40px] bg-gradient-to-br from-white to-gray-50/50 p-6 shadow-[0px_15px_70px_-10px_rgba(0,0,0,0.15)] transition-all duration-500 hover:shadow-[0_30px_90px_-15px_rgba(251,133,0,0.4)] hover:-translate-y-3 hover:scale-[1.02] border border-gray-100/50 overflow-hidden"
@@ -120,12 +144,7 @@ export default function Services() {
                 <div className="mr-3 flex-shrink-0 w-12 h-12 relative transition-all duration-500 group-hover:scale-125 group-hover:rotate-6">
                   {/* Icon glow background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FB8500]/30 to-[#FFAC4F]/30 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <Image
-                    src={service.icon}
-                    alt={`${service.title} icon`}
-                    fill
-                    className="object-contain relative z-10 drop-shadow-lg group-hover:drop-shadow-[0_0_25px_rgba(251,133,0,0.6)] transition-all duration-500"
-                  />
+                  <ServiceIcon iconPath={service.icon} title={service.title} />
                 </div>
                 <h3 className="text-xl font-semibold text-[#3B3C4D] group-hover:text-[#FB8500] transition-colors duration-300 group-hover:drop-shadow-[0_0_10px_rgba(251,133,0,0.3)]">
                   {service.title}
@@ -138,7 +157,8 @@ export default function Services() {
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FB8500] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

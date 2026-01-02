@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useGSAPAnimation } from '@/hooks/useGSAPAnimation';
 
@@ -100,7 +100,31 @@ export default function About() {
           </p>
         </div>
         <div ref={featuresRef} className="mx-auto mb-20 mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
-          {features.map((feature, index) => (
+          {features.map((feature, index) => {
+            const FeatureIcon = ({ iconPath, title }: { iconPath: string; title: string }) => {
+              const [imageError, setImageError] = useState(false);
+              
+              if (imageError) {
+                return (
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FB8500] to-[#FFAC4F] rounded-xl flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">{title.charAt(0)}</span>
+                  </div>
+                );
+              }
+              
+              return (
+                <div className="absolute inset-0">
+                  <img
+                    src={iconPath}
+                    alt={`${title} icon`}
+                    className="w-full h-full object-contain relative z-10 drop-shadow-lg group-hover:drop-shadow-[0_0_20px_rgba(251,133,0,0.5)] transition-all duration-500"
+                    onError={() => setImageError(true)}
+                  />
+                </div>
+              );
+            };
+            
+            return (
             <div
               key={index}
               className="group relative rounded-[40px] bg-gradient-to-br from-white to-gray-50/50 p-6 shadow-[0px_15px_70px_-10px_rgba(0,0,0,0.15)] transition-all duration-500 hover:shadow-[0_25px_80px_-10px_rgba(251,133,0,0.3)] hover:-translate-y-2 border border-gray-100/50 overflow-hidden"
@@ -114,12 +138,7 @@ export default function About() {
               <div className="relative z-10 mb-4 flex items-center">
                 <div className="mr-3 flex-shrink-0 w-12 h-12 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FB8500]/20 to-[#FFAC4F]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <Image
-                    src={feature.icon}
-                    alt={`${feature.title} icon`}
-                    fill
-                    className="object-contain relative z-10 drop-shadow-lg group-hover:drop-shadow-[0_0_20px_rgba(251,133,0,0.5)] transition-all duration-500"
-                  />
+                  <FeatureIcon iconPath={feature.icon} title={feature.title} />
                 </div>
                 <h3 className="text-xl font-semibold text-[#3B3C4D] group-hover:text-[#FB8500] transition-colors duration-300">
                   {feature.title}
@@ -129,7 +148,8 @@ export default function About() {
                 {feature.description}
               </p>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mx-auto mb-20 grid max-w-7xl gap-8 md:grid-cols-2">

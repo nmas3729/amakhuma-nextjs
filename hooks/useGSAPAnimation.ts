@@ -34,8 +34,8 @@ export function useGSAPAnimation() {
     prefersReducedMotion.current = mediaQuery.matches;
 
     // Check for low-end device (basic heuristic)
-    const hardwareConcurrency = (navigator as any).hardwareConcurrency || 4;
-    const deviceMemory = (navigator as any).deviceMemory || 4;
+    const hardwareConcurrency = (navigator as Navigator & { hardwareConcurrency?: number }).hardwareConcurrency || 4;
+    const deviceMemory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 4;
     isLowEndDevice.current = hardwareConcurrency < 4 || deviceMemory < 4;
 
     // Listen for changes

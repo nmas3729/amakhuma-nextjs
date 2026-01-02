@@ -48,22 +48,40 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 pb-[200px] text-center">
-        <p ref={welcomeRef} className="mb-2.5 text-lg font-medium text-white/90 drop-shadow-lg">
+        <p 
+          ref={welcomeRef} 
+          className="mb-4 text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#FFAC4F] drop-shadow-lg"
+        >
           Welcome to
         </p>
         <h1 
           ref={titleRef} 
-          className="mb-5 text-[4em] font-bold leading-tight text-white drop-shadow-lg md:text-5xl lg:text-6xl relative"
+          className="mb-6 text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] relative inline-block"
         >
           <span className="relative inline-block">
-            Amakhuma
-            {/* Futuristic text glow */}
-            <span className="absolute inset-0 text-white blur-xl opacity-50" aria-hidden="true">Amakhuma</span>
+            <span className="block bg-gradient-to-r from-white via-[#FFAC4F] to-white bg-clip-text text-transparent drop-shadow-2xl">
+              Amakhuma
+            </span>
+            {/* Futuristic orange glow effect behind text */}
+            <span 
+              className="absolute -inset-4 bg-gradient-to-r from-[#FB8500]/30 via-[#FFAC4F]/40 to-[#FB8500]/30 blur-3xl -z-10 rounded-full" 
+              aria-hidden="true"
+            />
           </span>
         </h1>
-        <p ref={subtitleRef} className="mx-auto max-w-4xl text-xl leading-relaxed text-white/95 drop-shadow-md md:text-2xl">
-          Leading mining solutions across Africa and beyond – powered by
-          innovation, integrity, and responsible growth.
+        <p 
+          ref={subtitleRef} 
+          className="mx-auto max-w-4xl text-lg md:text-xl lg:text-2xl leading-relaxed drop-shadow-lg"
+        >
+          <span className="block mb-3 font-semibold text-white">
+            Leading mining solutions across Africa and beyond
+          </span>
+          <span className="text-white/90 font-light">
+            Powered by{' '}
+            <span className="text-[#FFAC4F] font-semibold">innovation</span>,{' '}
+            <span className="text-[#FFAC4F] font-semibold">integrity</span>, and{' '}
+            <span className="text-[#FFAC4F] font-semibold">responsible growth</span>.
+          </span>
         </p>
       </div>
 

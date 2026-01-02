@@ -8,7 +8,7 @@ export default function Team() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const membersRef = useRef<HTMLDivElement>(null);
-  const { fadeInUp, staggerFadeInUp, scaleIn } = useGSAPAnimation();
+  const { fadeInUp, staggerFadeInUp } = useGSAPAnimation();
   const [expandedBios, setExpandedBios] = useState<{ [key: number]: boolean }>({});
 
   const toggleBio = (index: number) => {
@@ -42,14 +42,14 @@ export default function Team() {
     {
       name: 'Bonani Siko',
       title: 'Executive Director',
-      image: '/images/team_bonani_siko.png',
+      image: '/images/team-bonani.jpg',
       shortBio: 'Bonani Siko is a seasoned mining executive and the Executive Director of Amakhuma Investment Holdings. With over 30 years of experience in the mining industry, Bonani brings a wealth of technical knowledge, operational expertise, and strategic leadership to the company\'s investment and development initiatives across the mining and energy sectors.',
       fullBio: 'Bonani Siko is a qualified Mining Engineer, holding a National Diploma, a National Higher Diploma in Coal Mining, as well as a B-Tech in Mining Engineering from the University of Johannesburg (UJ). Bonani has also completed an Executive Development Programme at the University of Cape Town (UCT). He holds a Mine Manager\'s Certificate of Competency, also referred to as a Mine Manager\'s Ticket of Competency, issued by South Africa\'s Department of Mineral Resources (DMR). Bonani has held several senior leadership roles, including General Manager of Mining Operations at Wescoal Holdings (Pty) Ltd, where he was appointed under Section 4.1 of the Mine Health and Safety Act. He also served as CEO of Wescoal Mining and held directorships at Wescoal Mining (Pty) Ltd and Aztolinx (Pty) Ltd. Earlier in his career, he served at Eskom\'s Primary Energy Division as Senior Manager of Coal Operations and later as Acting Divisional Executive, managing the full coal value chain and coal supply agreements with mining houses. In addition to his role at Amakhuma, Bonani is the CEO and Executive Director of Siko Mining Services (SMS), a company dedicated to delivering innovative, efficient, and sustainable mining solutions. He is an active member of the South African Colliery Manager\'s Association (SACMA) and the Institute of Directors in Southern Africa (IoDSA). Bonani\'s leadership is grounded in a commitment to safety, sustainability, transformation, and long-term value creation.',
     },
     {
       name: 'Mzoxolo Beqezi',
       title: 'Technology Consultant',
-      image: '/images/team_mzoxolo_beqezi.png',
+      image: '/images/team-mzoxolo.jpg',
       shortBio: 'Mzoxolo Beqezi brings over 20 years of experience in Information Technology, including 12 years dedicated to Mining IT. He is the founder of NMAS INNOVATIONS Pty Ltd, a certified AWS and Azure specialist, a skilled Linux Administrator, and holds additional credentials in ITIL, cybersecurity, and cloud architecture. His expertise covers systems implementation, infrastructure design, network management, and IT governance across complex industrial and mining environments.',
       fullBio: 'Mzoxolo Beqezi brings over 20 years of experience in Information Technology, including 12 years dedicated to Mining IT. He is the founder of NMAS INNOVATIONS Pty Ltd, a certified AWS and Azure specialist, a skilled Linux Administrator, and holds additional credentials in ITIL, cybersecurity, and cloud architecture. His expertise covers systems implementation, infrastructure design, network management, and IT governance across complex industrial and mining environments. At Amakhuma, Mzoxolo plays a pivotal role in planning, deploying, and maintaining secure, scalable technology solutions that enhance efficiency, safety, and data-driven decision-making. He also contributes to strategic IT planning — aligning technology initiatives with business goals to support digital transformation and sustainable growth. Mzoxolo\'s broad experience, spanning both hands-on technical operations and strategic consulting, enables him to bridge the gap between IT systems and business performance. Passionate about continuous learning and innovation, he is committed to leveraging modern cloud, automation, and security technologies to optimize Amakhuma\'s IT landscape and strengthen its competitive edge in the mining sector.',
     },
