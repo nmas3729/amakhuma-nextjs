@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Niramit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Niramit', Helvetica, Arial, sans-serif;
+  
+  /* Amakhuma color palette */
+  --color-primary: #FB8500;
+  --color-primary-light: #FFAC4F;
+  --color-primary-pale: #FFE9CF;
+  --color-secondary: #B8C4CB;
+  --color-white: #FFFFFF;
+  --color-dark: #3B3C4D;
+  --color-dark-overlay: rgba(17, 18, 26, 0.4);
+  --color-dark-text: rgba(59, 60, 77, 0.7);
+  --color-white-text: rgba(255, 255, 255, 0.7);
+  
+  /* Container max-width matching original site */
+  --container-max-width: 1200px;
+}
+
+body {
+  @apply bg-white text-[#3B3C4D] font-sans text-base leading-relaxed;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Touch optimization */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent horizontal scrolling on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Smooth scrolling with respect to reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* iOS Safari sticky header fix */
+@supports (-webkit-touch-callout: none) {
+  nav.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
